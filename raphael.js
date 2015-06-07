@@ -375,7 +375,7 @@
     eve.toString = function () {
         return "You are running Eve " + version;
     };
-    (typeof module != "undefined" && module.exports) ? (module.exports = eve) : (typeof define != "undefined" ? (define("eve", [], function() { return eve; })) : (glob.eve = eve));
+    define("eve", [], function() { return eve; });
 })(this);
 // ┌─────────────────────────────────────────────────────────────────────┐ \\
 // │ "Raphaël 2.1.2" - JavaScript Vector Library                         │ \\
@@ -387,9 +387,9 @@
 
 (function (glob, factory) {
     // AMD support
-    if (typeof define === "function" && define.amd) {
+    if (typeof define === "function") {
         // Define as an anonymous module
-        define(["eve"], function( eve ) {
+        define("raphael",["eve"], function( eve ) {
             return factory(glob, eve);
         });
     } else {
